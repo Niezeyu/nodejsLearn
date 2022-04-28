@@ -54,7 +54,7 @@ const router = (app) => {
                 res.send(resData(200, '注册成功', true));
             }
         })
-    })
+    });
 }
 
 module.exports = router;

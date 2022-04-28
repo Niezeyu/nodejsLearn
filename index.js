@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const port = 9000;
+const port = 9002;
 
 // express引入bodyparser处理post请求
 require('./bodyParser/index')(app);
@@ -11,5 +11,5 @@ require('./bodyParser/index')(app);
 require('./router/index.js')(app);
 
 app.listen(port, () => {
-    console.log(`项目启动了----http://localhost:9000/`)
+    console.log(`项目启动了----http://localhost:9002/`)
 });
