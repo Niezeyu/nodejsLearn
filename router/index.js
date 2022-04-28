@@ -1,7 +1,6 @@
 // 引入数据库库
 const conn = require('../db/index.js');
-// 引入md5加密
-const md5 = require('../tool/crypto');
+
 // 返回体
 const resData = (code, data, msg) => {
     return {
@@ -10,6 +9,14 @@ const resData = (code, data, msg) => {
         msg: msg ? '成功' : "失败"
     }
 };
+// 加密
+const creatMd5 = (str) => {
+    // 引入md5加密
+    const crypto = require('crypto');
+    const md5 = crypto.createHash('md5');
+    return md5.update(str).digest("hex");
+}
+
 // 登录注册路由
 const router = (app) => {
     // 登录
@@ -18,7 +25,7 @@ const router = (app) => {
         const username = req.body.username;
         const password = req.body.password;
         // 解密
-        const newPas = md5.update(password).digest("hex");
+        const newPas = creatMd5(password);
         // 数据库查询
         conn.query("select * from sys_user where username = ?", [username], (err, data) => {
             if (err) {
@@ -38,7 +45,7 @@ const router = (app) => {
         const name = req.body.username;
         const password = req.body.password;
         // 加密密码
-        let newPas = md5.update(password).digest("hex");
+        let newPas = creatMd5(password);
         // 数据库查询
         conn.query("INSERT INTO sys_user(username,password) values(?,?)", [name, newPas], (err, data) => {
             if (err) {
