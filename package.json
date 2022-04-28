@@ -1,0 +1,15 @@
+{
+  "name": "nodejslearn",
+  "version": "1.0.0",
+  "description": "a node.js product about express of learnning\\",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "niezeyu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.0",
+    "mysql": "^2.18.1"
+  }
+}
